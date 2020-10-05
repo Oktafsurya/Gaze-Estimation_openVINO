@@ -66,16 +66,30 @@ Argument|Type|Description
 --out | Required | path to output video.
 
 ## Benchmarks
-*TODO:* Include the benchmark results of running your model on multiple hardwares and multiple model precisions. Your benchmarks can include: model loading time, input/output processing time, model inference time etc.
+Benchmarking is done using a laptop with specifications:
+- Brand     : ASUS
+- CPU       : Intel® Core™ i7-4720HQ CPU @ 2.60GHz × 8 
+- Graphics  : GeForce GTX 950M/PCIe/SSE2
+- RAM       : 8 GB
+- OS        : Ubuntu 16.04 LTS 64-bit
+
+#### CPU
+
+| Properties            | FP16        | FP16-INT8   | FP32        |
+| ----------------------| ----------- | ----------- | ----------- |
+|Total Model Loading    | 707.41ms    | 2216.518ms  | 690.83ms    |
+|Total Inference Time   | 74.1s       | 74.2s       | 74.0s       |
+|FPS                    | 0.796fps    | 0.795fps    | 0.797fps    |
+
+| Loading time each model (in ms)   |  FP16       | FP16-INT8   | FP32        |
+| ----------------------            | ----------- | ----------- | ----------- |
+|Face detection                     | *           | *           | *           |
+|Facial landmark                    | 397.866     | 1728.518    | 348.82      |
+|Head pose                          | 75.923      | 192.77      | 61.65       |
+|Gaze estimation                    | 91.259      | 166.07      | 75.10       |
 
 ## Results
-*TODO:* Discuss the benchmark results and explain why you are getting the results you are getting. For instance, explain why there is difference in inference time for FP32, FP16 and INT8 models.
-
-## Stand Out Suggestions
-This is where you can provide information about the stand out suggestions that you have attempted.
+From the benchmarking result above, we can conclude that model with lower precision give us faster total inference time, total time to load all model and also fps. Model with higher precision for example FP16-INT8 tend to give slower total inference time, total time to load all model and fps.
 
 ### Async Inference
 If you have used Async Inference in your code, benchmark the results and explain its effects on power and performance of your project.
-
-### Edge Cases
-There will be certain situations that will break your inference flow. For instance, lighting changes or multiple people in the frame. Explain some of the edge cases you encountered in your project and how you solved them to make your project more robust.
