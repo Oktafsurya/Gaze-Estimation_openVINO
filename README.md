@@ -32,7 +32,7 @@ The flow of data will look like this:
 ## Demo
 Using CPU:
 
-`python3 src/main.py --i bin/demo.mp4 --out output/result_FP16-INT8.avi --model_precision FP16-INT8`
+`python3 src/main.py --in bin/demo.mp4 --out output/result_FP32.avi`
 
 Result:
 <p align="center"> 
