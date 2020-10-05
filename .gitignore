@@ -1,0 +1,12 @@
+config/weight/
+
+__pycache__/
+
+*/__pycache__/
+
+models/
+
+.vscode/
+
+*.swp
+
