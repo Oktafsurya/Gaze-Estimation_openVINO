@@ -16,21 +16,19 @@ import time
 def arg_parse():
     parser = ArgumentParser()
 
-    parser.add_argument("--face_detection", dest = 'face_detection', help ="Path to a face detection model xml file with a trained model.",
+    parser.add_argument("--face_det", dest = 'face_detection', help ="Path to a face detection model xml file with a trained model.",
                         default="models/intel/face-detection-adas-binary-0001/FP32-INT1/face-detection-adas-binary-0001.xml")
     parser.add_argument("--head_pose", dest = 'head_pose', help ="Path to a head pose estimation model xml file with a trained model.",
-                        default="models/intel/head-pose-estimation-adas-0001/FP16-INT8/head-pose-estimation-adas-0001.xml")
-    parser.add_argument("--facial_landmark", dest = 'facial_landmark', help ="Path to a facial landmark detection model xml file with a trained model.",
-                        default="models/intel/facial-landmarks-35-adas-0002/FP16-INT8/facial-landmarks-35-adas-0002.xml")
+                        default="models/intel/head-pose-estimation-adas-0001/FP32/head-pose-estimation-adas-0001.xml")
+    parser.add_argument("--facial_land", dest = 'facial_landmark', help ="Path to a facial landmark detection model xml file with a trained model.",
+                        default="models/intel/facial-landmarks-35-adas-0002/FP32/facial-landmarks-35-adas-0002.xml")
     parser.add_argument("--gaze_model", dest = 'gaze_model', help ="Path to a gaze estimation model xml file with a trained model.",
-                        default="models/intel/gaze-estimation-adas-0002/FP16-INT8/gaze-estimation-adas-0002.xml")
+                        default="models/intel/gaze-estimation-adas-0002/FP32/gaze-estimation-adas-0002.xml")
 
-    parser.add_argument("--i", dest = 'input', type=str, required=True,
+    parser.add_argument("--in", dest = 'input', type=str, required=True,
                         help="Path to image or video file or CAM")
 
     parser.add_argument("--out", dest = 'output', help="path to output video")
-
-    parser.add_argument("--model_precision", dest = 'model_precision', type=str, help="model type used")
     
     return parser.parse_args()
 
@@ -78,7 +76,6 @@ if __name__ ==  '__main__':
     head_pose_path = args.head_pose
     facial_landmark_path = args.facial_landmark
     gaze_model_path = args.gaze_model
-    model_precision = args.model_precision
 
     face_model = FaceDetection(model_name=face_model_path)
     head_pose_model = HeadPoseEstimation(model_name=head_pose_path)
@@ -209,7 +206,7 @@ if __name__ ==  '__main__':
     print("[INFO] Total inference time = {} s".format(total_inference_time))
     print("[INFO] FPS =", fps)
 
-    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'benchmark_{}.txt'.format(model_precision)), 'w') as f:
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'benchmark.txt'), 'w') as f:
         f.write('Face Detection model loading time:' + str(face_loading_time)+'ms'+'\n')
         f.write('Head Pose Estimation model loading time:' + str(head_pose_time)+'ms'+'\n')
         f.write('Facial Landmark detection model loading time:' + str(facial_landmark_time)+'ms'+'\n')
