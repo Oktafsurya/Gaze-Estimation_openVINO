@@ -58,8 +58,8 @@ Command line arguments needed by `main.py`
 
 Argument|Type|Description
 | ------------- | ------------- | -------------
---face_detection | Required (with default value) | Path to a face detection model xml file with a trained model.
---facial_landmark | Required (with default value) | Path to a facial landmark detection model xml file with a trained model.
+--face_det | Required (with default value) | Path to a face detection model xml file with a trained model.
+--facial_land | Required (with default value) | Path to a facial landmark detection model xml file with a trained model.
 --head_pose | Required (with default value) | Path to a head pose estimation model xml file with a trained model.
 --gaze_model | Required (with default value) | Path to a gaze estimation model xml file with a trained model.
 --in | Required | Path to image or video file or CAM.
@@ -88,8 +88,10 @@ Benchmarking is done using a laptop with specifications:
 |Head pose                          | 75.923      | 192.77      | 61.65       |
 |Gaze estimation                    | 91.259      | 166.07      | 75.10       |
 
+You can refer to the `.txt` file for benchmarking result for each model precision 
+- [benchmark_FP16.txt](https://github.com/Oktafsurya/Gaze-Estimation_openVINO/blob/master/benchmark_FP16.txt)
+- [benchmark_FP16-INT8](https://github.com/Oktafsurya/Gaze-Estimation_openVINO/blob/master/benchmark_FP16-INT8.txt)
+- [benchmark_FP32](https://github.com/Oktafsurya/Gaze-Estimation_openVINO/blob/master/benchmark_FP32.txt)
+
 ## Results
 From the benchmarking result above, we can conclude that model with lower precision give us faster total inference time, total time to load all model and also fps. Model with higher precision for example FP16-INT8 tend to give slower total inference time, total time to load all model and fps.
-
-### Async Inference
-If you have used Async Inference in your code, benchmark the results and explain its effects on power and performance of your project.
