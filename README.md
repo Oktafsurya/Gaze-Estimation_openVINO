@@ -8,16 +8,62 @@ We will use 4 pre-trained model from openVINO:
 4. [gaze-estimation-adas-0002](https://docs.openvinotoolkit.org/latest/omz_models_intel_gaze_estimation_adas_0002_description_gaze_estimation_adas_0002.html)
 
 ### The Pipeline
+The flow of data will look like this:
+<p align="center"> 
+<img src=https://github.com/Oktafsurya/Gaze-Estimation_openVINO/blob/master/bin/pipeline.png>
+</p>
 
 
 ## Project Set Up and Installation
-*TODO:* Explain the setup procedures to run your project. For instance, this can include your project directory structure, the models you need to download and where to place them etc. Also include details about how to install the dependencies your project requires.
+- [Install the openVINO toolkit](https://docs.openvinotoolkit.org/latest/) according to the system being used. 
+- Extract the submission file or clone the repository: 
+
+  `https://github.com/Oktafsurya/Gaze-Estimation_openVINO.git`
+  
+- [Setup the virtual environment](https://docs.python.org/3.8/library/venv.html) in your system
+- Install all the requirements
+
+  `pip install -r requirements.txt`
+  
+- Download 4 pre-trained model from openVINO 
+
+  `python src/model_downloader.py`
 
 ## Demo
-*TODO:* Explain how to run a basic demo of your model.
+Using CPU:
+
+`python3 src/main.py --i bin/demo.mp4 --out output/result_FP16-INT8.avi --model_precision FP16-INT8`
+
+Result:
+<p align="center"> 
+<img src=https://github.com/Oktafsurya/Gaze-Estimation_openVINO/blob/master/bin/gaze_estimation_ok.png>
+</p>
+
+or you can refer to the video result for each model precision
+- [FP16](https://github.com/Oktafsurya/Gaze-Estimation_openVINO/blob/master/output/result_FP16.avi) (all model using FP16 precision)
+- [FP16-INT8](https://github.com/Oktafsurya/Gaze-Estimation_openVINO/blob/master/output/result_FP16-INT8.avi) (all model using FP16-INT8 precision)
+- [FP32](https://github.com/Oktafsurya/Gaze-Estimation_openVINO/blob/master/output/result_FP32.avi) (all model using FP32 precision)
 
 ## Documentation
-*TODO:* Include any documentation that users might need to better understand your project code. For instance, this is a good place to explain the command line arguments that your project supports.
+Command line arguments needed by `model_downloader.py`
+
+Argument|Type|Description
+| ------------- | ------------- | -------------
+--fd | Required (with default value) | face detection model that want to download.
+--fl | Required (with default value) | facial landmark detection model that want to download.
+--hp | Required (with default value) | head pose estimation model that want to download.
+--ge | Required (with default value) | gaze estimation model that want to download.
+
+Command line arguments needed by `main.py`
+
+Argument|Type|Description
+| ------------- | ------------- | -------------
+--face_detection | Required (with default value) | Path to a face detection model xml file with a trained model.
+--facial_landmark | Required (with default value) | Path to a facial landmark detection model xml file with a trained model.
+--head_pose | Required (with default value) | Path to a head pose estimation model xml file with a trained model.
+--gaze_model | Required (with default value) | Path to a gaze estimation model xml file with a trained model.
+--in | Required | Path to image or video file or CAM.
+--out | Required | path to output video.
 
 ## Benchmarks
 *TODO:* Include the benchmark results of running your model on multiple hardwares and multiple model precisions. Your benchmarks can include: model loading time, input/output processing time, model inference time etc.
