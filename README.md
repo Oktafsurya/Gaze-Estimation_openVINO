@@ -1,6 +1,14 @@
 # Computer Pointer Controller
 
-*TODO:* Write a short introduction to your project
+In this project, we will be using the Gaze Estimation model to estimate the gaze of the user's eyes and change the mouse pointer position accordingly.
+We will use 4 pre-trained model from openVINO:
+1. [face-detection-adas-binary-0001](https://docs.openvinotoolkit.org/latest/omz_models_intel_face_detection_adas_binary_0001_description_face_detection_adas_binary_0001.html)
+2. [head-pose-estimation-adas-0001](https://docs.openvinotoolkit.org/latest/omz_models_intel_head_pose_estimation_adas_0001_description_head_pose_estimation_adas_0001.html)
+3. [facial-landmarks-35-adas-0002](https://docs.openvinotoolkit.org/latest/omz_models_intel_facial_landmarks_35_adas_0002_description_facial_landmarks_35_adas_0002.html)
+4. [gaze-estimation-adas-0002](https://docs.openvinotoolkit.org/latest/omz_models_intel_gaze_estimation_adas_0002_description_gaze_estimation_adas_0002.html)
+
+### The Pipeline
+
 
 ## Project Set Up and Installation
 *TODO:* Explain the setup procedures to run your project. For instance, this can include your project directory structure, the models you need to download and where to place them etc. Also include details about how to install the dependencies your project requires.
