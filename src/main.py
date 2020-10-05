@@ -78,7 +78,7 @@ if __name__ ==  '__main__':
     head_pose_path = args.head_pose
     facial_landmark_path = args.facial_landmark
     gaze_model_path = args.gaze_model
-    model_type = args.model_precision
+    model_precision = args.model_precision
 
     face_model = FaceDetection(model_name=face_model_path)
     head_pose_model = HeadPoseEstimation(model_name=head_pose_path)
@@ -209,7 +209,7 @@ if __name__ ==  '__main__':
     print("[INFO] Total inference time = {} s".format(total_inference_time))
     print("[INFO] FPS =", fps)
 
-    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'bencmark_{}.txt'.format(model_precision)), 'w') as f:
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'benchmark_{}.txt'.format(model_precision)), 'w') as f:
         f.write('Face Detection model loading time:' + str(face_loading_time)+'ms'+'\n')
         f.write('Head Pose Estimation model loading time:' + str(head_pose_time)+'ms'+'\n')
         f.write('Facial Landmark detection model loading time:' + str(facial_landmark_time)+'ms'+'\n')
